@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbflice1wtdei"]
+
+[ext_resource type="Script" path="res://boss.gd" id="1_bn30j"]
+
+[sub_resource type="Gradient" id="Gradient_oajql"]
+colors = PackedColorArray(0.639216, 0, 0.705882, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sxa5l"]
+gradient = SubResource("Gradient_oajql")
+
+[sub_resource type="PrismMesh" id="PrismMesh_wb8ar"]
+left_to_right = 2.0
+size = Vector3(69.705, 123.83, 68.775)
+subdivide_width = 11
+subdivide_height = 1
+
+[sub_resource type="MeshTexture" id="MeshTexture_o8tnl"]
+mesh = SubResource("PrismMesh_wb8ar")
+base_texture = SubResource("GradientTexture1D_sxa5l")
+image_size = Vector2(100, 100)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68ksh"]
+radius = 15.7411
+height = 161.89
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(-22, 26)
+collision_layer = 3
+script = ExtResource("1_bn30j")
+
+[node name="boss" type="Sprite2D" parent="."]
+position = Vector2(598, 404)
+texture = SubResource("MeshTexture_o8tnl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(594, 345)
+rotation = -0.76737
+shape = SubResource("CapsuleShape2D_68ksh")

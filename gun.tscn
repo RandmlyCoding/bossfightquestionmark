@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5n5lcoyn41n6"]
+
+[ext_resource type="Texture2D" uid="uid://hneqkk7yb62p" path="res://Gun.png" id="1_bstqp"]
+
+[sub_resource type="GDScript" id="GDScript_kwoma"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Gun" type="Sprite2D"]
+position = Vector2(6.855, 0)
+texture = ExtResource("1_bstqp")
+script = SubResource("GDScript_kwoma")

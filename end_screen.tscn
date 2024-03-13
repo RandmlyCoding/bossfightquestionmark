@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3xo2v047s2nx"]
+
+[ext_resource type="Script" path="res://AnimationPlayerendscreen.gd" id="1_2m0e6"]
+[ext_resource type="Script" path="res://Label2.gd" id="1_7v0ln"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1xfwn"]
+line_spacing = -16.755
+font_size = 32
+outline_size = 16
+shadow_size = 500
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(132.85, 93.37)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3fqy"]
+line_spacing = 4.33
+shadow_size = 500
+shadow_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(-459.38, 1)
+
+[sub_resource type="Animation" id="Animation_rbmws"]
+resource_name = "cool screen"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_yuylk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcqpr"]
+_data = {
+"RESET": SubResource("Animation_yuylk"),
+"cool screen": SubResource("Animation_rbmws")
+}
+
+[node name="end screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 8.0
+offset_right = 114.0
+offset_bottom = 235.0
+text = "You beat the game!"
+label_settings = SubResource("LabelSettings_1xfwn")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 87.0
+offset_right = 755.0
+offset_bottom = 364.0
+text = "Your deaths are:                         "
+label_settings = SubResource("LabelSettings_o3fqy")
+autowrap_mode = 1
+justification_flags = 8
+text_overrun_behavior = 4
+uppercase = true
+tab_stops = PackedFloat32Array(0, 0)
+max_lines_visible = 7
+visible_characters = 0
+visible_characters_behavior = 4
+visible_ratio = 0.0
+text_direction = 2
+script = ExtResource("1_7v0ln")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rcqpr")
+}
+script = ExtResource("1_2m0e6")
